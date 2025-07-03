@@ -1,241 +1,241 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from adjustText import adjust_text  # for adjusting text annotations in 2D
-from mpl_toolkits.mplot3d import Axes3D  # for 3D plotting
+from adjustText import adjust_text  
+from mpl_toolkits.mplot3d import Axes3D  
 
-# ----------------- Data Loading and Preparation -----------------
+#  data preparation
 
-# Load the CSV files (adjust the file paths if needed)
-df_metrics = pd.read_csv("metrics.csv")
-df_epa = pd.read_csv("epa_metrics.csv")
+# reading data pertaining to measured metrics and estimated metrics
+team_stats = pd.read_csv("metrics.csv")
+epa_stats = pd.read_csv("epa_metrics.csv")
 
-# Clean column names: strip whitespace.
-df_metrics.columns = df_metrics.columns.str.strip()
-df_epa.columns = df_epa.columns.str.strip()
+# removing column spaces
+team_stats.columns = team_stats.columns.str.strip()
+epa_stats.columns = epa_stats.columns.str.strip()
 
-# Convert the 'team' column to string for consistency.
-df_metrics["team"] = df_metrics["team"].astype(str)
-df_epa["team"] = df_epa["team"].astype(str)
+team_stats["team"] = team_stats["team"].astype(str)
+epa_stats["team"] = epa_stats["team"].astype(str)
 
-# Merge the two DataFrames on the 'team' column.
-df = pd.merge(df_metrics, df_epa, on="team", how="outer")
+# merging data based on the team 
+all_the_data = pd.merge(team_stats, epa_stats, on="team", how="outer")
 
-# Define metric lists based on the CSV structures.
-# For df_metrics, ignore 'num' and 'team'.
-metrics_columns = [col for col in df_metrics.columns if col not in ["num", "team"]]
+# filtering used metrics vs nonused metrics
+raw_metrics_cols = [col for col in team_stats.columns if col not in ["num", "team"]]
+epa_metric_cols = [col for col in epa_stats.columns if col not in ["num", "team", "first_event", "rank", "rps", "rps_per_match", "record"]]
 
-# For df_epa, ignore non-metric columns.
-epa_columns = [col for col in df_epa.columns if col not in ["num", "team", "first_event", "rank", "rps", "rps_per_match", "record"]]
+# using ANSI Color Codes for organization and easy analysis
 
-# ----------------- ANSI Color Codes (for terminal output) -----------------
+green_highlight = "\033[92m"
+yellow_highlight = "\033[93m"
+red_highlight = "\033[91m"
+COLOR_RESET = "\033[0m"
 
-GREEN = "\033[92m"
-YELLOW = "\033[93m"
-RED = "\033[91m"
-RESET = "\033[0m"
-
-def get_color(rank, total):
+def get_rank_color(current_rank, total_teams_count):
     """
-    Return a color code based on the team's rank.
-    Top 10: Green, Bottom 10: Red, Otherwise: Yellow.
+    generates out a color code based on how good a team's rank is
+    top 10 are green, bottom 10 are red , everyone else is yellow
     """
-    if rank <= 10:
-        return GREEN
-    elif rank >= total - 9:
-        return RED
+    if current_rank <= 10:
+        return green_highlight
+    elif current_rank >= total_teams_count - 9: # Checking if it's in the bottom 10.
+        return red_highlight
     else:
-        return YELLOW
+        return yellow_highlight
 
-# ----------------- Option 1: Ranking by Metric -----------------
 
-def rank_by_metric(metric):
+def show_metric_rankings(metric_name):
     """
-    Sort teams (highest-to-lowest) by the given metric and print rankings.
+    Takes a metric, sorts all teams by it (best first), and then prints out a
+    nicely colored list of who stands where. Super useful for quick comparisons!
     """
-    if metric not in df.columns:
-        print(f"\nMetric '{metric}' not found in the data.\n")
-        return
-    sorted_df = df.sort_values(by=metric, ascending=False).reset_index(drop=True)
-    total_teams = len(sorted_df)
-    print(f"\nRanking for metric '{metric}':")
-    for i, row in sorted_df.iterrows():
-        rank = i + 1
-        color = get_color(rank, total_teams)
-        print(f"{color}Rank {rank}: Team {row['team']} with {metric} = {row[metric]}{RESET}")
-    print()  # newline for spacing
-
-# ----------------- Option 2: Team Overview -----------------
-
-def team_overview(team_input):
-    """
-    Display all metrics (from both CSVs) for a given team along with its ranking in each metric.
-    """
-    team_val = str(team_input).strip()
-    
-    if team_val not in df['team'].values:
-        print(f"\nTeam '{team_input}' not found in data.\n")
+    if metric_name not in all_the_data.columns:
+        print(f"\nHang on, I can't find a metric called '{metric_name}' in my data. Double-check the spelling?\n")
         return
 
-    team_row = df[df['team'] == team_val].iloc[0]
-    print(f"\nOverview for Team {team_val}:\n")
-    
-    # Combine metric lists from both CSVs.
-    all_metrics = metrics_columns + epa_columns
-    total_teams = len(df)
-    
-    for metric in all_metrics:
-        if metric in df.columns:
-            # Sort teams by the metric and compute the rank for this team.
-            sorted_series = df.sort_values(by=metric, ascending=False)[metric]
-            rank = sorted_series.reset_index(drop=True).tolist().index(team_row[metric]) + 1
-            color = get_color(rank, total_teams)
-            value = team_row[metric]
-            print(f"{metric}: {value}  {color}(Rank {rank} of {total_teams}){RESET}")
-    print()  # newline for spacing
+    # Sorting everyone out from high to low for this specific metric.
+    sorted_teams = all_the_data.sort_values(by=metric_name, ascending=False).reset_index(drop=True)
+    how_many_teams = len(sorted_teams)
 
-# ----------------- Option 3: K-Means Clustering Analysis -----------------
+    print(f"\nHere's the leaderboard for '{metric_name}':")
+    for i, team_info in sorted_teams.iterrows():
+        this_teams_rank = i + 1
+        rank_color = get_rank_color(this_teams_rank, how_many_teams)
+        print(f"{rank_color}Rank {this_teams_rank}: Team {team_info['team']} with {metric_name} = {team_info[metric_name]}{COLOR_RESET}")
 
-def kmeans_clustering():
+
+def get_team_info(team_id_input):
     """
-    Perform K-Means clustering on either 2 or 3 chosen metrics and graph the results.
+     shows data metrics for a specific team
     """
-    # Ask for analysis dimension.
-    dimension = input("Enter analysis dimension").strip()
-    if dimension not in ['2', '3']:
-        print("Invalid dimension. Please enter 2 or 3.")
+ 
+    team_id_clean = str(team_id_input).strip()
+    
+    if team_id_clean not in all_the_data['team'].values:
+        print(f"\nCan't find Team '{team_id_input}', is that the right team ID?\n")
         return
-    dim = int(dimension)
+
+    one_team_data = all_the_data[all_the_data['team'] == team_id_clean].iloc[0]
+    print(f"\nhere are the metrics for team {team_id_clean}:\n")
     
-    # Prepare a combined list of metrics.
-    all_metrics = metrics_columns + epa_columns
-    print("\nAvailable Metrics for K-Means Clustering:")
-    for metric in all_metrics:
-        print(f" - {metric}")
+ 
+    all_known_metrics = raw_metrics_cols + epa_metric_cols
+    total_teams_in_dataset = len(all_the_data)
     
-    # Ask for metric names based on desired dimension.
-    selected_metrics = []
-    for i in range(dim):
-        metric = input(f"Enter metric {i+1}: ").strip()
-        if metric not in df.columns:
-            print(f"Metric '{metric}' not found. Please try again.")
+    for each_metric in all_known_metrics:
+        if each_metric in all_the_data.columns: 
+            # Sorting the whole dataset by this metric to find our team's rank.
+ 
+            sorted_by_this_metric = all_the_data.sort_values(by=each_metric, ascending=False)[each_metric]
+            
+            # Finding where our team's value for this metric sits in the sorted list.
+      
+            this_teams_rank = sorted_by_this_metric.reset_index(drop=True).tolist().index(one_team_data[each_metric]) + 1
+            
+        
+            rank_display_color = get_rank_color(this_teams_rank, total_teams_in_dataset)
+            
+            # final print statement
+            metric_value = one_team_data[each_metric]
+            print(f"{each_metric}: {metric_value}  {rank_display_color}(Rank {this_teams_rank} of {total_teams_in_dataset}){COLOR_RESET}")
+    print() # More breathing room.
+
+# kmeans cluster analysis
+
+def run_kmeans_analysis():
+    """
+   running a kmeans cluster analysis can help a lot with visualizing how good teams are at a combination of 2 or 3 metrics. graphing teams' statistics and clustering them in different groups can
+   be very helpful in identifying green or red flag teams
+    """
+    # 2d or 3d analysis?
+    how_many_dimensions = input("enter 2 or 3: ").strip()
+    if how_many_dimensions not in ['2', '3']:
+        print("pick either 2 or 3 please")
+        return
+    num_dims = int(how_many_dimensions)
+    
+    all_metrics_available = raw_metrics_cols + epa_metric_cols
+    print("\nmetrics available for kmeans analysis:")
+    for m in all_metrics_available:
+        print(f" - {m}")
+    
+    # prompt user to choose metrics
+    chosen_metrics = []
+    for i in range(num_dims):
+        chosen_metric = input(f"enter metric {i+1}: ").strip()
+        if chosen_metric not in all_the_data.columns:
+            print(f"'{chosen_metric}' is not in the list, please type it exactly")
             return
-        selected_metrics.append(metric)
+        chosen_metrics.append(chosen_metric)
     
-    # Ask for the number of clusters.
+    # asking user to provide a value for constant k
     try:
-        k = int(input("Enter number of clusters (k): ").strip())
+        num_clusters = int(input("how many clusters (groups)? ").strip())
     except ValueError:
-        print("Invalid input for number of clusters.")
+        print("try again with a whole number")
         return
     
-    # Extract the team names along with the selected metrics and drop rows with missing values.
-    clustering_data = df[['team'] + selected_metrics].dropna().copy()
-    # Convert metric values to numeric (if they aren't already)
-    for metric in selected_metrics:
-        clustering_data[metric] = pd.to_numeric(clustering_data[metric], errors='coerce')
-    clustering_data = clustering_data.dropna()
+   
+    data_for_clustering = all_the_data[['team'] + chosen_metrics].dropna().copy()
+    
+    # double check that metrics are not strings,but are numbers
+    for chosen_m in chosen_metrics:
+        data_for_clustering[chosen_m] = pd.to_numeric(data_for_clustering[chosen_m], errors='coerce')
+    data_for_clustering = data_for_clustering.dropna() # dropping rows that become empty
 
-    if clustering_data.empty:
-        print("No valid data available for these metrics.")
+    if data_for_clustering.empty:
+        print("clustering not available, sorry")
         return
 
-    # Run K-Means clustering.
-    kmeans = KMeans(n_clusters=k, random_state=42)
-    clustering_data['cluster'] = kmeans.fit_predict(clustering_data[selected_metrics])
     
-    # Colors for clusters.
-    colors = plt.get_cmap("viridis", k)
+    k_means_model = KMeans(n_clusters=num_clusters, random_state=42, n_init='auto') 
+    data_for_clustering['cluster'] = k_means_model.fit_predict(data_for_clustering[chosen_metrics])
     
-    if dim == 2:
-        # 2D Plotting.
-        plt.figure(figsize=(8, 6))
-        texts = []  # store text annotations for adjustText.
-        
-        for cluster_label in range(k):
-            cluster_data = clustering_data[clustering_data['cluster'] == cluster_label]
-            plt.scatter(cluster_data[selected_metrics[0]], cluster_data[selected_metrics[1]], 
-                        label=f"Cluster {cluster_label}",
-                        color=colors(cluster_label))
-            # Annotate each point with the team name.
-            for _, row in cluster_data.iterrows():
-                txt = plt.text(row[selected_metrics[0]], row[selected_metrics[1]], row['team'], fontsize=8, alpha=0.7)
-                texts.append(txt)
-        
-        # Adjust text annotations to reduce overlapping.
-        adjust_text(texts, arrowprops=dict(arrowstyle='->', color='gray'))
-        plt.xlabel(selected_metrics[0])
-        plt.ylabel(selected_metrics[1])
-        plt.title(f"K-Means Clustering (k={k}) on {selected_metrics[0]} vs {selected_metrics[1]}")
+    # colors to distinguish different clusters
+    cluster_colors = plt.get_cmap("colors", num_clusters)
+    
+    if num_dims == 2:
+        plt.figure(figsize=(10, 8)) 
+        all_the_labels = [] 
+        for cluster_num in range(num_clusters):
+            this_cluster_data = data_for_clustering[data_for_clustering['cluster'] == cluster_num]
+            plt.scatter(this_cluster_data[chosen_metrics[0]], this_cluster_data[chosen_metrics[1]],  
+                        label=f"cluster {cluster_num}",
+                        color=cluster_colors(cluster_num))
+            for _, team_row in this_cluster_data.iterrows():
+                txt_label = plt.text(team_row[chosen_metrics[0]], team_row[chosen_metrics[1]], team_row['team'], fontsize=8, alpha=0.7)
+                all_the_labels.append(txt_label)
+        adjust_text(all_the_labels, arrowprops=dict(arrowstyle='->', color='gray', lw=0.5))
+        plt.xlabel(chosen_metrics[0])
+        plt.ylabel(chosen_metrics[1])
+        plt.title(f"k-means clustering (k={num_clusters}) for {chosen_metrics[0]} vs {chosen_metrics[1]}")
         plt.legend()
-        plt.show()
+        plt.grid(True, linestyle='--', alpha=0.6) 
+        plt.show() 
+    elif num_dims == 3:
+        fig = plt.figure(figsize=(12, 10)) 
+        ax = fig.add_subplot(111, projection='3d') # setting up the 3D axes
+        for cluster_num in range(num_clusters):
+            this_cluster_data = data_for_clustering[data_for_clustering['cluster'] == cluster_num]
+            ax.scatter(this_cluster_data[chosen_metrics[0]],  
+                       this_cluster_data[chosen_metrics[1]],  
+                       this_cluster_data[chosen_metrics[2]],
+                       label=f"cluster {cluster_num}",
+                       color=cluster_colors(cluster_num))
+            for _, team_row in this_cluster_data.iterrows():
+                ax.text(team_row[chosen_metrics[0]], team_row[chosen_metrics[1]], team_row[chosen_metrics[2]],  
+                        team_row['team'], fontsize=8, alpha=0.8)
         
-    elif dim == 3:
-        # 3D Plotting.
-        fig = plt.figure(figsize=(10, 8))
-        ax = fig.add_subplot(111, projection='3d')
+        # drawing a line in the (1,1,1) direction, helps me visualize direction and acts as a referenec for direction of the max of the 3 metrics
+        x_limits = ax.get_xlim()
+        y_limits = ax.get_ylim()
+        z_limits = ax.get_zlim()
+        t_start = min(x_limits[0], y_limits[0], z_limits[0])
+        t_end = max(x_limits[1], y_limits[1], z_limits[1])
+        ax.plot([t_start, t_end], [t_start, t_end], [t_start, t_end], color='red', linewidth=2, linestyle=':', label='direction (1,1,1) Ref.')
         
-        for cluster_label in range(k):
-            cluster_data = clustering_data[clustering_data['cluster'] == cluster_label]
-            ax.scatter(cluster_data[selected_metrics[0]], 
-                       cluster_data[selected_metrics[1]], 
-                       cluster_data[selected_metrics[2]],
-                       label=f"Cluster {cluster_label}",
-                       color=colors(cluster_label))
-            # Annotate each point with the team name.
-            for _, row in cluster_data.iterrows():
-                ax.text(row[selected_metrics[0]], row[selected_metrics[1]], row[selected_metrics[2]], 
-                        row['team'], fontsize=8, alpha=0.8)
-        
-        # Draw the vector in the direction (1,1,1) that spans the limits of the plot.
-        xlims = ax.get_xlim()
-        ylims = ax.get_ylim()
-        zlims = ax.get_zlim()
-        t_min = min(xlims[0], ylims[0], zlims[0])
-        t_max = max(xlims[1], ylims[1], zlims[1])
-        ax.plot([t_min, t_max], [t_min, t_max], [t_min, t_max], color='red', linewidth=2, label='Direction (1,1,1)')
-        
-        ax.set_xlabel(selected_metrics[0])
-        ax.set_ylabel(selected_metrics[1])
-        ax.set_zlabel(selected_metrics[2])
-        ax.set_title(f"3D K-Means Clustering (k={k}) on {', '.join(selected_metrics)}")
+        ax.set_xlabel(chosen_metrics[0])
+        ax.set_ylabel(chosen_metrics[1])
+        ax.set_zlabel(chosen_metrics[2])
+        ax.set_title(f"3d k-means clustering (k={num_clusters}) on {', '.join(chosen_metrics)}")
         ax.legend()
         plt.show()
 
-# ----------------- Main Loop -----------------
+# main loop
 
 def main():
-    print("Welcome to WarriorBenchmark!")
+    print("kmeans & ranking analysis")
     
-    while True:
-        print("\nChoose an option:")
-        print("  1: Rank teams by an EPA metric")
-        print("  2: Show a team's overview (all metrics)")
-        print("  3: K-Means clustering analysis")
-        print("  q: Quit")
+    while True: 
+        print("\nWhat do you want to do?")
+        print("  1: teams ranked by a specific EPA metric")
+        print("  2: full breakdown for a single team")
+        print("  3: k-means clustering")
+        print("  q: quit")
         
-        choice = input("\nEnter your choice (1/2/3/q): ").strip().lower()
+        user_choice = input("\ntype your choice (1, 2, 3, or q): ").strip().lower()
         
-        if choice == '1':
-            print("\nAvailable EPA Metrics:")
-            for metric in epa_columns:
+        if user_choice == '1':
+            print("\nhere are the EPA metrics")
+            for metric in epa_metric_cols:
                 print(f" - {metric}")
-            metric = input("\nEnter the metric name from the list above: ").strip()
-            rank_by_metric(metric)
-        elif choice == '2':
-            print("\nAvailable Metrics for Team Overview:")
-            all_metrics = metrics_columns + epa_columns
-            for metric in all_metrics:
+            metric_to_rank = input("\nWhich metric , type it exactly: ").strip()
+            show_metric_rankings(metric_to_rank)
+        elif user_choice == '2':
+            # remind users of metrics they can potentially choose
+            print("\n these are all of the metrics for a team:")
+            all_known_metrics_for_overview = raw_metrics_cols + epa_metric_cols
+            for metric in all_known_metrics_for_overview:
                 print(f" - {metric}")
-            team_input = input("\nEnter the team identifier: ").strip()
-            team_overview(team_input)
-        elif choice == '3':
-            kmeans_clustering()
-        elif choice == 'q':
-            print("Exiting program.")
-            break
+            team_id_lookup = input("\nenter in a team number (e.g., 'team 123'): ").strip()
+            get_team_info(team_id_lookup)
+        elif user_choice == '3':
+            run_kmeans_analysis()
+        elif user_choice == 'q':
+            print("quitting")
+            break 
         else:
-            print("Invalid choice. Please try again.")
+            print("please pick from one of the options")
 
 if __name__ == "__main__":
     main()
