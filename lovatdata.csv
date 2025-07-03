@@ -1,0 +1,80 @@
+match,teamNumber,role,coralPickup,algaePickup,algaeKnocking,underShallowCage,teleopPoints,autoPoints,driverAbility,feeds,defends,coralPickups,algaePickups,coralDrops,algaeDrops,coralL1,coralL2,coralL3,coralL4,processorScores,netScores,netFails,activeAuton,endgame,scouter,notes
+Q1,8404,OFFENSE,NONE,NONE,FALSE,FALSE,0,3,3,0,0,1,0,0,0,0,0,0,0,0,0,0,TRUE,NOT_ATTEMPTED,Aiden,DC during the whole match 
+Q2,6619,DEFENSE,NONE,NONE,FALSE,TRUE,7,3,3,0,0,1,0,0,0,0,0,0,1,0,0,0,TRUE,PARKED,Grace,beached for ~15s with around 2 minutes left; started playing defense with around 1.5 mins left.
+Q3,2473,OFFENSE,STATION,NONE,FALSE,FALSE,34,10,4,0,0,10,0,0,0,1,0,5,3,0,0,0,TRUE,PARKED,Ethan Duong,10 sec coral cycles; did L3 primarily; can do L4; one L4 center auto
+Q3,6665,OFFENSE,GROUND,GROUND,FALSE,TRUE,26,0,3,0,0,9,2,2,1,7,0,0,0,0,0,0,FALSE,DEEP,Jeslyn Qi,quokka bot; can pick up ground alage and coral pretty easily and consistently; scores l1 consistently. failed auto
+Q4,841,OFFENSE,STATION,NONE,FALSE,FALSE,61,3,4,0,0,17,0,6,0,1,0,3,7,0,0,0,TRUE,DEEP,Jeslyn Qi,fast cycles maybe 7-8 sec; fast hp but holds 1 coral a time. super consistent coral on all levels; with some drops. fast climb 15 sec 
+Q4,2489,OFFENSE,STATION,NONE,FALSE,FALSE,27,10,3,0,0,12,0,3,0,1,3,4,1,0,0,0,TRUE,NOT_ATTEMPTED,Grace,pretty consistent overall
+Q4,6662,OFFENSE,STATION,REEF,TRUE,FALSE,18,3,3,0,0,8,0,2,0,0,6,0,0,0,0,0,TRUE,NOT_ATTEMPTED,Ethan Duong,10+ sec coral cycle; Statjon coral is kind of slow; Counterdefense isn’t the strongest; no climb
+Q4,9777,DEFENSE,GROUND,REEF,TRUE,FALSE,12,3,2,0,1,1,3,1,1,0,0,0,0,2,0,0,TRUE,NOT_ATTEMPTED,Katie,only brought algae to the barge after not being able to score corals; then went to defense on the other side; moved very slow
+Q4,9777,DEFENSE,NONE,REEF,TRUE,FALSE,6,3,2,0,1,1,4,0,3,0,0,0,0,1,0,0,TRUE,NOT_ATTEMPTED,Isabella,Got coral stuck in them
+Q5,649,OFFENSE,STATION,NONE,FALSE,FALSE,22,3,2,0,0,5,0,1,0,0,0,0,4,0,0,0,TRUE,PARKED,Diya,alignment for some branches was slow
+Q5,1678,OFFENSE,GROUND,BOTH,TRUE,FALSE,79,24,5,0,0,19,4,1,0,0,5,6,7,1,3,0,TRUE,PARKED,Isabella,Human players have very good technique; very very fast cycles with coral and algae
+Q5,5104,OFFENSE,BOTH,NONE,TRUE,FALSE,39,0,3,0,0,10,2,2,2,3,0,4,1,0,0,0,FALSE,DEEP,Katie,kinda slow to align; consistent scoring
+Q5,9143,OFFENSE,STATION,GROUND,FALSE,TRUE,34,6,4,0,0,11,2,0,0,11,0,0,0,2,0,0,TRUE,PARKED,Aiden,Kitbot; 5-7 sec cycle but only L1; processor
+Q6,1072,OFFENSE,STATION,REEF,TRUE,FALSE,43,24,4,0,0,12,3,3,0,1,4,0,4,0,3,0,TRUE,DEEP,Ethan Duong,barge cycles are good; got the deep climb nicely; L2-L3 cycles 8 seconds and capable of L4
+Q6,5274,OFFENSE,STATION,REEF,TRUE,TRUE,30,6,3,0,0,11,1,0,1,5,4,2,0,0,0,0,TRUE,PARKED,Nathan Watson,Very good at coral rp with coop bc can consistently do L1; 2; & 3
+Q6,7413,OFFENSE,GROUND,GROUND,FALSE,TRUE,0,3,1,0,0,1,1,1,1,0,0,0,0,0,0,0,TRUE,FAILED_DEEP,Aiden,Very bad drive ability; problem with drive train; can’t move in one direction. Tried climb 1 minute before match end but failed. 
+Q7,4135,OFFENSE,STATION,NONE,TRUE,FALSE,7,3,2,0,0,3,0,0,0,1,0,0,1,0,0,0,TRUE,NOT_ATTEMPTED,Akhil,Experienced a lot of technical difficulties in this match. Moved very sluggishly and took 15+ second pauses while in the middle of the field or after in taking from source. Spent 30 seconds still in other alliances side. When the robot is functional they are able to score L4; align; and intake from coral smoothly. 
+Q7,10615,OFFENSE,NONE,REEF,TRUE,FALSE,2,3,2,0,1,1,5,0,5,0,0,0,0,0,0,0,TRUE,PARKED,David,Intook 4 algae and dropped them all. transitioned to clearing algae instead of grabbing them after the 2nd algae.
+Q8,2489,OFFENSE,STATION,NONE,FALSE,FALSE,39,3,4,0,0,13,0,2,0,2,4,4,1,0,0,0,TRUE,PARKED,Grace,generally consistent robot; can score all levels of coral pretty consistently 
+Q9,649,OFFENSE,STATION,NONE,FALSE,FALSE,12,10,3,0,1,5,0,2,0,0,0,0,3,0,0,0,TRUE,PARKED,Diya,
+Q9,1836,OFFENSE,STATION,REEF,TRUE,FALSE,46,12,3,0,0,10,2,0,1,2,0,8,0,1,0,0,TRUE,DEEP,Aimee,Is only able to do L3 and below; alignment was a little slow but it's pretty consistent across any position on the field; it's either auto align or their drivers can see through the reef;  auto looked super good and accurate
+Q9,6665,OFFENSE,GROUND,NONE,FALSE,TRUE,28,3,3,0,0,14,0,1,0,13,0,0,0,0,0,0,TRUE,PARKED,David,Tried to score L1 in auto but could not get coral into trough in time. Solid L1 cycles throughout the match; good synergy with alliance. got caught on algae momentarily here and there but traversed field element traffic well
+Q9,7137,OFFENSE,NONE,BOTH,TRUE,FALSE,6,3,2,0,0,1,3,1,2,0,0,0,0,1,0,0,TRUE,NOT_ATTEMPTED,Akhil,Poor performance in this match. Extremely jittery alignment at reef. Frequently drops algae. Driver awareness was not up to par. Missed processor on first attempt. Algae only bot.
+Q10,2473,OFFENSE,STATION,NONE,FALSE,FALSE,24,10,3,0,0,6,0,0,0,0,0,1,5,0,0,0,TRUE,FAILED_DEEP,Isabella,
+Q10,3598,OFFENSE,STATION,NONE,FALSE,FALSE,40,10,3,0,0,12,1,2,1,2,3,0,5,0,0,0,TRUE,DEEP,Bhrigu,
+Q10,8006,OFFENSE,NONE,GROUND,FALSE,FALSE,26,3,3,0,0,1,4,1,0,0,0,0,0,4,0,0,TRUE,PARKED,Katie,could only bring algae to barge and then had to do defense after; kinda slow
+Q11,3478,OFFENSE,STATION,REEF,TRUE,FALSE,60,17,4,0,0,14,4,0,1,0,0,4,10,0,1,2,TRUE,FAILED_DEEP,Isabella,
+Q11,9114,OFFENSE,STATION,NONE,FALSE,FALSE,17,3,3,0,0,9,0,4,0,0,5,0,0,0,0,0,TRUE,PARKED,David,Had some coral that bounced out or fell off of L2. Looked like they just ran a mobility auto. smooth driving but had some pauses between cycles. driving is very linear (kinda like how a tank drive moves) but they also use swerve translation sometimes. HP is good
+Q13,840,DEFENSE,GROUND,NONE,FALSE,TRUE,17,3,4,0,1,5,1,1,1,0,0,0,3,0,0,0,TRUE,PARKED,Aimee,Scoring L4 very great consistently during tele but then coral got stuck in indexer so immediately pivoted to defense instead; unfortunately 604 is not easily defended against but that was good quick thinking
+Q13,5104,OFFENSE,BOTH,NONE,TRUE,FALSE,21,6,3,0,0,8,2,2,2,1,1,2,2,0,0,0,TRUE,FAILED_DEEP,Katie,decently consistent with scoring; moved kinda slow
+Q13,7401,OFFENSE,STATION,NONE,FALSE,FALSE,10,0,2,0,0,4,0,2,0,0,0,2,0,0,0,0,FALSE,PARKED,Isabella,
+Q14,4698,OFFENSE,BOTH,REEF,TRUE,FALSE,34,17,4,0,0,12,2,1,2,0,3,0,8,0,0,0,TRUE,FAILED_DEEP,Grace,can consistently score L2-4 (didn’t attempt L1); can intake from both ground and coral and did a mix of both (not sure why). overall very well rounded and consistent robot.
+Q14,9143,OFFENSE,STATION,GROUND,FALSE,TRUE,44,3,4,0,0,14,4,1,0,13,0,0,0,3,0,0,TRUE,NOT_ATTEMPTED,Bhrigu,Basically kit bot with algae intake
+Q14,9777,OFFENSE,STATION,REEF,TRUE,FALSE,26,3,4,0,0,7,2,1,2,0,1,2,3,0,0,0,TRUE,NOT_ATTEMPTED,Katie,consistent with scoring corals; wasn’t able to successfully bring algae to processor
+Q15,3598,OFFENSE,STATION,NONE,FALSE,FALSE,27,3,4,0,0,11,1,3,1,2,3,1,2,0,0,0,TRUE,FAILED_DEEP,Bhrigu,Very shaky elevator; takes some time to align and isn’t always accurate 
+Q15,7667,DEFENSE,STATION,NONE,FALSE,FALSE,35,3,3,0,0,9,0,0,0,2,3,0,4,0,0,0,TRUE,PARKED,Nathan Watson,The 2 L1 were bc they missed L2
+Q16,10339,DEFENSE,NONE,NONE,FALSE,FALSE,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,FALSE,NOT_ATTEMPTED,Bhrigu,
+Q17,6619,IMMOBILE,GROUND,NONE,FALSE,FALSE,15,6,3,0,0,6,0,2,0,1,0,0,3,0,0,0,TRUE,NOT_ATTEMPTED,Grace,DCed with ~50s left of match. not sure why. ground intake not super smooth and driver takes some time to find coral. reef alignment also not great
+Q17,6662,IMMOBILE,NONE,NONE,FALSE,FALSE,0,3,1,0,0,1,0,0,0,0,0,0,0,0,0,0,TRUE,NOT_ATTEMPTED,Ethan Duong,DCed during the whole match; leave auto was very slow; drive base not work?
+Q17,9125,OFFENSE,NONE,GROUND,FALSE,FALSE,20,0,2,1,0,7,3,3,1,1,2,1,0,1,0,0,FALSE,PARKED,Bhrigu,Slow robot; super slow elevator; not great driving
+Q18,1072,OFFENSE,STATION,REEF,TRUE,FALSE,23,24,4,0,0,12,3,3,0,3,3,0,3,0,2,1,TRUE,FAILED_DEEP,Ethan Duong,Failed deep climb; but overall L2-L4 good fast cycles; L1 is same angle as L2 but lower down so it misses often
+Q18,7528,DEFENSE,NONE,NONE,FALSE,FALSE,2,3,3,0,1,1,0,1,0,0,0,0,0,0,0,0,TRUE,PARKED,Katie,
+Q19,2473,OFFENSE,STATION,NONE,FALSE,FALSE,7,10,3,0,0,3,0,1,0,0,0,0,2,0,0,0,TRUE,PARKED,Katie,tried to score L4 but missed several times; slow to align w reef 
+Q19,5274,OFFENSE,STATION,REEF,TRUE,FALSE,20,6,3,0,0,12,2,2,2,10,0,0,0,0,0,0,TRUE,PARKED,Nathan Watson,Arm broke so they could only do L1
+Q20,604,OFFENSE,STATION,REEF,TRUE,FALSE,77,10,5,0,0,16,4,1,1,0,2,5,8,1,2,0,TRUE,PARKED,Akhil,It’s quicksilver idt I have to say too much. Great bot; delicious driving. Can do all levels; doesn’t miss; can dealgify; did processor and barge. Intakes tastily and cycle time is sub 5
+Q20,2489,OFFENSE,STATION,NONE,FALSE,FALSE,16,0,4,0,0,8,0,3,0,1,2,2,0,0,0,0,FALSE,NOT_ATTEMPTED,Bhrigu,
+Q20,7401,OFFENSE,STATION,NONE,FALSE,FALSE,7,0,2,0,0,4,0,2,0,0,1,1,0,0,0,0,FALSE,NOT_ATTEMPTED,Isabella,
+Q21,649,OFFENSE,GROUND,NONE,FALSE,FALSE,17,3,3,0,0,5,0,1,0,0,0,0,3,0,0,0,TRUE,PARKED,Diya,seem to get better as the match goes on; good awareness to stop cycling and park at the very end
+Q23,1072,OFFENSE,STATION,REEF,TRUE,FALSE,33,17,4,0,0,10,3,3,0,1,1,3,2,2,1,0,TRUE,NOT_ATTEMPTED,Ethan Duong,Mainly coral cycling; Sometimes when intake would pass through too far leading to coral drops did not park
+Q23,4135,OFFENSE,STATION,NONE,FALSE,FALSE,24,3,2,0,0,6,0,0,0,1,0,3,2,0,0,0,TRUE,NOT_ATTEMPTED,Akhil,Extremely slow bot. Can score coral consistently; but takes 10-15 seconds to go from source to reef and to align. Very sluggish when moving around field. 
+Q26,7667,OFFENSE,NONE,REEF,TRUE,FALSE,26,3,2,0,0,5,1,0,1,0,0,1,4,0,0,0,TRUE,PARKED,Nathan Watson,Lowkey took a while intaking and scoring.
+Q27,1678,OFFENSE,GROUND,REEF,TRUE,FALSE,91,31,5,0,0,21,2,1,0,0,3,5,12,1,1,0,TRUE,DEEP,Isabella,
+Q27,5274,OFFENSE,STATION,REEF,TRUE,FALSE,30,3,4,0,0,12,0,1,0,6,4,1,0,0,0,0,TRUE,PARKED,Nathan Watson,Very good at coral RP; going to ask them about algae and L4 rn.
+Q28,4698,OFFENSE,GROUND,NONE,FALSE,FALSE,38,3,3,0,0,15,0,4,0,4,2,3,2,0,0,0,TRUE,PARKED,Grace,
+Q30,649,DEFENSE,STATION,NONE,FALSE,FALSE,2,10,3,0,0,1,0,0,0,0,0,0,1,0,0,0,TRUE,PARKED,Nathan Watson,Defense and coral fell in their bot so they couldn't intake any coral
+Q32,2489,OFFENSE,STATION,NONE,FALSE,FALSE,13,3,3,0,0,7,0,2,0,1,3,0,0,0,0,0,TRUE,PARKED,Grace,reef alignment not great; stopped scoring with around 1 minute left of match; parked with 30s left.
+Q33,5104,OFFENSE,GROUND,NONE,FALSE,FALSE,46,10,4,0,0,12,0,0,0,4,0,4,4,0,0,0,TRUE,DEEP,Katie,consistent scoring; smooth driving
+Q33,9777,DEFENSE,STATION,REEF,TRUE,FALSE,26,3,2,0,0,9,1,2,1,0,2,2,2,0,0,0,TRUE,PARKED,Nathan Watson,Fast intake but it can get stuck in the funnel. Bad operator and driver synergy caused them to lose up to 7 secs when scoring and not being able to do L4
+Q34,840,OFFENSE,GROUND,NONE,FALSE,FALSE,38,3,4,0,0,9,1,1,0,0,7,0,1,0,0,0,TRUE,DEEP,Allison,They stopped for like 5 seconds not sure maybe they were stuck or something . Otherwise it was good they were good
+Q35,4698,IMMOBILE,BOTH,NONE,FALSE,FALSE,0,13,3,0,0,3,0,0,0,1,0,0,1,0,0,0,TRUE,NOT_ATTEMPTED,Grace,got stuck on the reef when trying to retract arm after overextending into the reef when trying to score L4 with around 2 minutes left of match.
+Q35,7528,DEFENSE,NONE,NONE,FALSE,FALSE,2,3,3,0,0,1,0,1,0,0,0,0,0,0,0,0,TRUE,PARKED,Katie,
+Q35,7667,DEFENSE,STATION,REEF,TRUE,FALSE,5,3,2,0,0,2,0,1,0,0,0,0,1,0,0,0,TRUE,NOT_ATTEMPTED,Nathan Watson,Their arms broke halfway through and they started to play defense
+Q36,1072,OFFENSE,STATION,REEF,TRUE,FALSE,35,24,4,0,0,9,2,1,0,2,2,0,4,0,2,0,TRUE,DEEP,Ethan Duong,climbed at 10 seconds; good 3 piece auto; good driver awareness; L1 attempted but not super consistent 
+Q37,6619,OFFENSE,GROUND,NONE,FALSE,FALSE,18,3,4,0,0,11,0,2,0,9,0,0,0,0,0,0,TRUE,FAILED_DEEP,Grace,can’t imagine how safe 6619’s bot felt in between 1678 and 1323 in the very beginning🤗🤗. they only scored L1 in this match (alliance with 1678 and 1323) but can usually do other levels of reef. started climbing with ~45s left of match; but didn’t end up being valid climb. some of the coral they were gonna intake were taken by madtown which was so much faster.
+Q37,6619,OFFENSE,GROUND,NONE,FALSE,FALSE,36,3,4,0,0,10,0,2,0,1,0,1,6,0,0,0,TRUE,FAILED_DEEP,Grace,pretty consistent intake; but takes a while to align cause they turn the coral around for diff levels of reef
+Q37,9777,OFFENSE,STATION,NONE,FALSE,FALSE,25,3,2,0,0,6,0,1,0,0,0,0,5,0,0,0,TRUE,NOT_ATTEMPTED,Katie,slow and took a long time to align coral to the reef
+Q39,6662,OFFENSE,STATION,REEF,TRUE,FALSE,28,7,4,0,0,9,2,0,2,1,5,3,0,0,0,0,TRUE,PARKED,Ethan Duong,L2-L3 primarily; but helps dealage; slow alignment 50% of the cycle is spent to alignment 
+Q43,7137,DEFENSE,NONE,NONE,TRUE,FALSE,0,3,2,0,1,1,0,1,0,0,0,0,0,0,0,0,TRUE,FAILED_DEEP,Isabella,
+Q45,2473,OFFENSE,STATION,NONE,FALSE,FALSE,8,10,3,0,0,7,0,4,0,0,1,0,2,0,0,0,TRUE,FAILED_DEEP,Ethan Duong,Center L4 auto seems consistent; L2-L3 primarily; overall shots had a lot of misses
+Q46,6662,OFFENSE,STATION,REEF,TRUE,FALSE,32,6,4,2,0,11,3,0,1,1,4,5,0,0,0,0,TRUE,NOT_ATTEMPTED,Ethan Duong,can do variety of levels consistently; intake is kind of slow but scoring is good; alignment is most of the cycle time
+Q47,7137,OFFENSE,NONE,REEF,TRUE,FALSE,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,FALSE,FAILED_DEEP,Akhil,Very rough match. They removed one algae from reef then got stuck on an algae for majority of game. After that they attempted to climb with 40 seconds left.
+Q47,7401,IMMOBILE,NONE,NONE,FALSE,FALSE,0,3,3,0,0,1,0,0,0,0,0,0,0,0,0,0,TRUE,NOT_ATTEMPTED,Isabella,DC
+Q49,840,OFFENSE,GROUND,REEF,TRUE,TRUE,39,0,4,0,0,12,1,2,1,2,1,3,4,0,0,0,FALSE,FAILED_DEEP,Aimee,Auto was supposed to be 2 pc L4 but both missed; scoring is pretty consistent but they generally seem to go for driver side coral; they did get coral stuck in the bottom at the beginning of tele op but got it out. Definitely would've been able to deep climb if they left a little earlier. 
+Q50,5104,OFFENSE,BOTH,NONE,TRUE,FALSE,35,10,4,0,0,8,2,2,2,0,0,2,4,0,0,0,TRUE,DEEP,Katie,climb was fast and smooth; scored L4 consistently
+Q51,7667,OFFENSE,STATION,REEF,FALSE,FALSE,28,6,3,0,0,10,0,2,0,1,3,3,1,0,0,0,TRUE,PARKED,Nathan Watson,Bad human player; fine intake; bad alignment
+Q52,6619,OFFENSE,GROUND,NONE,FALSE,FALSE,42,3,3,0,0,11,0,2,0,5,0,0,4,0,0,0,TRUE,DEEP,Grace,🐌; slow at reef alignment; slow at intake; slow climb too (~30s); quite well rounded though.
+Q53,1836,OFFENSE,STATION,REEF,TRUE,TRUE,40,6,4,0,0,9,5,1,3,1,0,7,0,2,0,0,TRUE,FAILED_DEEP,Aimee,Very fast bot; idt they can do L4 but i think they have auto align? Scoring; especially intake; is sooo fast they just hit the station and push off
+Q57,4698,OFFENSE,STATION,REEF,TRUE,FALSE,35,13,4,0,0,11,2,1,2,1,2,3,4,0,0,0,TRUE,PARKED,Grace,very consistent; pretty fast with alignment too. only thing maybe slowing down the bot is taking algae and then letting it roll away; but not very significant time wasted. also idk why they’re not using ground intake anymore; they only got coral from station in this match
+Q58,7401,OFFENSE,STATION,NONE,FALSE,FALSE,7,3,2,0,0,4,0,2,0,1,1,0,0,0,0,0,TRUE,PARKED,Isabella,
